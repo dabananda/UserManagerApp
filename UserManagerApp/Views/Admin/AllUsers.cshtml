@@ -1,0 +1,24 @@
+﻿@model IEnumerable<UserManagerApp.Models.ApplicationUser>
+
+<h2>All Users</h2>
+<table class="table">
+    <tr>
+        <th>Email</th>
+        <th>Full Name</th>
+        <th>Approved</th>
+        <th>Assign Role</th>
+    </tr>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.Email</td>
+            <td>@user.FullName</td>
+            <td>@user.IsApproved</td>
+            <td>
+                <a asp-action="AssignRole" asp-route-userId="@user.Id" asp-route-role="Admin" class="btn btn-danger">Admin</a>
+                <a asp-action="AssignRole" asp-route-userId="@user.Id" asp-route-role="Manager" class="btn btn-primary">Manager</a>
+                <a asp-action="AssignRole" asp-route-userId="@user.Id" asp-route-role="User" class="btn btn-secondary">User</a>
+            </td>
+        </tr>
+    }
+</table>

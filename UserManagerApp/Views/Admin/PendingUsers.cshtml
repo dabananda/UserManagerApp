@@ -1,0 +1,20 @@
+﻿@model IEnumerable<UserManagerApp.Models.ApplicationUser>
+
+<h2>Pending Users</h2>
+<table class="table">
+    <tr>
+        <th>Email</th>
+        <th>Full Name</th>
+        <th>Action</th>
+    </tr>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.Email</td>
+            <td>@user.FullName</td>
+            <td>
+                <a asp-action="ApproveUser" asp-route-id="@user.Id" class="btn btn-success">Approve</a>
+            </td>
+        </tr>
+    }
+</table>
